@@ -12,10 +12,12 @@ Facultad de Estudios Superiores Aragón
         Profesor:
         Ing.Rafael González Betancourt
         """
+#Se importan los metodos programados en los otros archivos .py, todos se mandan a llamar de forma local.
 import Biseccion
 import PuntoFijo
 import NR
 def menu():
+    #Se usa un ciclo while true para el menu, no se detiene hasta que el usuario lo indique
     while True:
         print("""
     Menú de Métodos Iterativos
@@ -24,6 +26,7 @@ def menu():
     3) Método de Newton - Raphson
     4) Salir
     """)
+        #Se utiliza excepciones para evitar generar errores en el programa, principalmente con los signos .-/* y letras.
         try:
             opcion = int(input("Introduce una opcion: "))
             if opcion == 1:
@@ -74,17 +77,19 @@ def puntofijo_option():
                              'presiona "N", si quieres regresar al menú principal: ')).lower()
         print("")
         if message == "y":
-            # Condiciones iniciales
+            #condiciones iniciales
             x0 = 1
             max_iter = 6
             tolerancia = 1e-5
 
-            # Opción a: g(x) = (x^3 + 2) / 5
+            #inciso a
             print("\nOpción a:")
+            # Se importan los metodos de forma local, algo similar al metodo set de java
             PuntoFijo.punto_fijo(x0, PuntoFijo.g_a, PuntoFijo.g_a_derivada, max_iter, tolerancia)
 
-            # Opción b: g(x) = sqrt(5x - 2)
+            #Inciso b
             print("\nOpción b:")
+            #Se importan los metodos de forma local, algo similar al metodo set de java
             PuntoFijo.punto_fijo(x0, PuntoFijo.g_b, PuntoFijo.g_b_derivada, max_iter, tolerancia)
             print("")
             print("Excelente, haz probado el metodo de Punto Fijo, ¿Por que no pruebas con otro?")
@@ -102,10 +107,10 @@ def Nr_option():
                              'Sabiendo que x0 = 1, hasta que el error sea cero, tomando en cuenta 4 decimales: ')).lower()
         print("")
         if message == "y":
-            # Punto de inicio
+            #punto de inicio
             x0 = 1
 
-            # Llamada a la función
+            #llamada a la función
             NR.newton_raphson(x0)
             print("")
             print("Excelente, haz probado todos los metodos.")
